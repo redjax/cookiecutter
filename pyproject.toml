@@ -7,12 +7,21 @@ requires-python = ">=3.11"
 dependencies = ["cookiecutter>=2.6.0"]
 
 [tool.uv]
-dev-dependencies = ["nox>=2024.10.9", "ruff>=0.7.1"]
+dev-dependencies = [
+    "nox>=2024.10.9",
+    "pyfakefs>=5.7.1",
+    "pytest-xdist>=3.6.1",
+    "ruff>=0.7.1",
+]
 
 ## Fix 'error: Multiple top-level packages discovered in flat-layout'
 #  https://github.com/pypa/setuptools/issues/3197#issuecomment-1078770109
 [tool.setuptools]
 py-modules = []
+
+[tool.pytest.ini_options]
+filterwarnings = ["error", "ignore::UserWarning"]
+testpaths = ["tests"]
 
 [tool.ruff.lint]
 select = [

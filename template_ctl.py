@@ -49,9 +49,9 @@ def main(no_input: bool = False):
     PDM_TEMPLATE_PATH = "t/python/pdm"
 
     ## Test rendering Python UV cookiecutter
-    # render_cookicutter(
-    #     template=UV_TEMPLATE_PATH, no_input=no_input, output_dir=SANDBOX_DIR
-    # )
+    render_cookicutter(
+        template=UV_TEMPLATE_PATH, no_input=no_input, output_dir=SANDBOX_DIR
+    )
 
     ## Test rendering Python PDM cookiecutter
     render_cookicutter(

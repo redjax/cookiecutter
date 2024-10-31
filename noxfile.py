@@ -194,6 +194,21 @@ def vulture_check(session: nox.Session):
     session.run("vulture")
 
 
+@nox.session(name="tests", tags=["tests"])
+def run_tests(session: nox.Session):
+    install_uv_project(session)
+
+    log.info("Running Pytest tests")
+    session.run(
+        "pytest",
+        "-n",
+        "auto",
+        "--tb=native",
+        "-v",
+        "-rasXxfP",
+    )
+
+
 ##############
 # Pre-commit #
 ##############
