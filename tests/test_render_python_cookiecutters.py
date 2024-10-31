@@ -5,7 +5,7 @@ from pathlib import Path
 from template_ctl import render_cookicutter
 
 
-def test_render_uv_template(sandbox_dir, uv_template):
+def test_render_python_uv_template(sandbox_dir, uv_template):
     try:
         # Render the template
         render_cookicutter(
@@ -22,7 +22,7 @@ def test_render_uv_template(sandbox_dir, uv_template):
         pytest.fail(f"Rendering template '{uv_template}' failed with error: {exc}")
 
 
-def test_render_pdm_template(sandbox_dir, pdm_template):
+def test_render_python_pdm_template(sandbox_dir, pdm_template):
     try:
         # Render the template
         render_cookicutter(
