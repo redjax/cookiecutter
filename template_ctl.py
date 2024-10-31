@@ -47,6 +47,7 @@ def render_cookicutter(
 def main(no_input: bool = False):
     UV_TEMPLATE_PATH = "t/python/uv"
     PDM_TEMPLATE_PATH = "t/python/pdm"
+    JUPYTER_NB_TEMPLATE_PATH = "t/jupyter"
 
     ## Test rendering Python UV cookiecutter
     render_cookicutter(
@@ -57,6 +58,11 @@ def main(no_input: bool = False):
     render_cookicutter(
         template=PDM_TEMPLATE_PATH, no_input=no_input, output_dir=SANDBOX_DIR
     )
+
+    ## Test rendering Jupyter cookiecutter
+    # render_cookicutter(
+    #     template=JUPYTER_NB_TEMPLATE_PATH, no_input=no_input, output_dir=SANDBOX_DIR
+    # )
 
 
 if __name__ == "__main__":
