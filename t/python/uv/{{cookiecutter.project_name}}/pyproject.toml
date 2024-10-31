@@ -13,10 +13,10 @@ dependencies = [
     {% if cookiecutter.add_dynaconf %}"dynaconf>=3.2.6",{% endif %}
     {% if cookiecutter.add_pydantic %}"pydantic>=2.9.2",{% endif %}
     {% if cookiecutter.add_http %}"httpx>=0.27.2",
-    "hishel>=0.0.32",{% endif %}
+    "hishel>=0.0.33",{% endif %}
     {% if cookiecutter.add_pandas %}"pandas>=2.2.3",
-    "pyarrow>=17.0.0",{% endif %}
-    {% if cookiecutter.add_sqlalchemy %}"sqlalchemy",{% endif %}
+    "pyarrow>=18.0.0",{% endif %}
+    {% if cookiecutter.add_sqlalchemy %}"sqlalchemy>=2.0.36",{% endif %}
     {% if cookiecutter.add_pendulum %}"pendulum>=3.0.0",{% endif %}
 ]
 
@@ -25,12 +25,7 @@ dependencies = [
 
 [tool.uv]
 
-dev-dependencies = [
-    "nox>=2024.4.15",
-    "uv>=0.4.18",
-    "ruff>=0.6.8",
-    "pytest-xdist>=3.6.1",
-]
+dev-dependencies = ["nox>=2024.10.9", "ruff>=0.7.1", "pytest-xdist>=3.6.1"]
 
 [tool.ruff]
 target-version = "py311"
