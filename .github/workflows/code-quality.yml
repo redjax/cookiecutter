@@ -1,0 +1,35 @@
+---
+name: Check & lint code
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "docs/**"
+      - "*.md"
+      - ".gitignore"
+
+jobs:
+  lint-format:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: 0.4.27
+
+      - name: Install project with uv
+        run: uv sync --all-extras --dev
+
+      - name: Lint code
+        run: uv run nox -s ruff-lint
+
+      - name: Check code with vulture
+        run: uv run nox -s vulture-check
