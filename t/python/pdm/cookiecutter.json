@@ -1,6 +1,6 @@
 {
     "project_name": "python-pdm-base",
-    "package_name": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')replace('.', '_')|trim() }}",
+    "package_name": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
     "project_description": "A new Python project",
     "package_dist": false,
     "author_name": "Anonymous",
