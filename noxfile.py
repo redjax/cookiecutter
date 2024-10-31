@@ -46,7 +46,7 @@ VENV_DIR = Path("./.venv").resolve()
 ## At minimum, these paths will be checked by your linters
 #  Add new paths with nox_utils.append_lint_paths(extra_paths=["..."],)
 DEFAULT_LINT_PATHS: list[str] = [
-    "src",
+    "template_ctl.py",
 ]
 ## Set directory for requirements.txt file output
 REQUIREMENTS_OUTPUT_DIR: Path = Path("./")
