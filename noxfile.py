@@ -46,8 +46,11 @@ VENV_DIR = Path("./.venv").resolve()
 ## At minimum, these paths will be checked by your linters
 #  Add new paths with nox_utils.append_lint_paths(extra_paths=["..."],)
 DEFAULT_LINT_PATHS: list[str] = [
-    "src",
+    "template_ctl.py",
 ]
+## Paths to check with vulture
+VULTURE_CHECK_PATHS: list[str] = ["template_ctl.py", "noxfile.py"]
+
 ## Set directory for requirements.txt file output
 REQUIREMENTS_OUTPUT_DIR: Path = Path("./")
 
@@ -192,6 +195,32 @@ def vulture_check(session: nox.Session):
 
     log.info("Running vulture")
     session.run("vulture")
+
+
+@nox.session(name="tests", tags=["tests"])
+def run_tests(session: nox.Session):
+    install_uv_project(session)
+
+    log.info("Running Pytest tests")
+    session.run(
+        "pytest",
+        "-n",
+        "auto",
+        "--tb=native",
+        "-v",
+        "-rasXxfP",
+    )
+
+
+@nox.session(name="vulture-check", tags=["quality"])
+def run_vulture_check(session: nox.Session):
+    session.install(f"vulture")
+
+    log.info("Checking for dead code with vulture")
+
+    for p in VULTURE_CHECK_PATHS:
+        log.info(f"[VULTURE] Checking path: {p}")
+        session.run("vulture", p, "--min-confidence", "100")
 
 
 ##############

@@ -1,6 +1,8 @@
+from __future__ import annotations
+
 import logging
-import typing as t
 from pathlib import Path
+import typing as t
 
 from cookiecutter.main import cookiecutter
 
@@ -33,7 +35,7 @@ def render_cookicutter(
             checkout=checkout_branch,
             no_input=no_input,
             extra_context=extra_context,
-            overwrite_if_exists=False,
+            overwrite_if_exists=overwrite,
             output_dir=output_dir,
             directory=template_dir,
         )
@@ -47,16 +49,22 @@ def render_cookicutter(
 def main(no_input: bool = False):
     UV_TEMPLATE_PATH = "t/python/uv"
     PDM_TEMPLATE_PATH = "t/python/pdm"
+    JUPYTER_NB_TEMPLATE_PATH = "t/jupyter"
 
     ## Test rendering Python UV cookiecutter
-    # render_cookicutter(
-    #     template=UV_TEMPLATE_PATH, no_input=no_input, output_dir=SANDBOX_DIR
-    # )
+    render_cookicutter(
+        template=UV_TEMPLATE_PATH, no_input=no_input, output_dir=SANDBOX_DIR
+    )
 
     ## Test rendering Python PDM cookiecutter
     render_cookicutter(
         template=PDM_TEMPLATE_PATH, no_input=no_input, output_dir=SANDBOX_DIR
     )
+
+    ## Test rendering Jupyter cookiecutter
+    # render_cookicutter(
+    #     template=JUPYTER_NB_TEMPLATE_PATH, no_input=no_input, output_dir=SANDBOX_DIR
+    # )
 
 
 if __name__ == "__main__":
