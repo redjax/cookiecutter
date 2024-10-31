@@ -38,6 +38,7 @@ def render_cookicutter(
             overwrite_if_exists=False,
             output_dir=output_dir,
             directory=template_dir,
+            overwrite=overwrite,
         )
     except Exception as exc:
         msg = f"({type(exc)}) Error rendering cookiecutter template. Details: {exc}"

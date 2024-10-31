@@ -48,6 +48,9 @@ VENV_DIR = Path("./.venv").resolve()
 DEFAULT_LINT_PATHS: list[str] = [
     "template_ctl.py",
 ]
+## Paths to check with vulture
+VULTURE_CHECK_PATHS: list[str] = ["template_ctl.py", "noxfile.py"]
+
 ## Set directory for requirements.txt file output
 REQUIREMENTS_OUTPUT_DIR: Path = Path("./")
 
@@ -207,6 +210,17 @@ def run_tests(session: nox.Session):
         "-v",
         "-rasXxfP",
     )
+
+
+@nox.session(name="vulture-check", tags=["quality"])
+def run_vulture_check(session: nox.Session):
+    session.install(f"vulture")
+
+    log.info("Checking for dead code with vulture")
+
+    for p in VULTURE_CHECK_PATHS:
+        log.info(f"[VULTURE] Checking path: {p}")
+        session.run("vulture", p, "--min-confidence", "100")
 
 
 ##############
