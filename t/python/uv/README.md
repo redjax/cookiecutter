@@ -4,14 +4,18 @@ A Python cookiecutter template using [uv](https://docs.astral.sh/uv/) for depend
 
 ## Usage
 
+```shell
+cookiecutter gh:redjax/cookiecutter --directory="t/python/uv"
+```
+
 ### With cookiecutter cli
 
 #### + From a location on the file system
 
-(Example:  `c:\git\cookiecutter-templates\cookiecutter-python-uv`):
+(Example:  `c:\git\cookiecutter\t\python\uv`):
 
 ```shell
-cookiecutter c:\git\cookiecutter-templates\cookiecutter-python-uv --output-dir=some/path/to/project
+cookiecutter c:\git\cookiecutter\t\python\uv --output-dir=some/path/to/project
 ```
 
 #### + Skip cookiecutter creation prompts
@@ -19,37 +23,14 @@ cookiecutter c:\git\cookiecutter-templates\cookiecutter-python-uv --output-dir=s
 Skip prompts & render template using defaults defined in [`cookiecutter.json`](./cookiecutter.json):
 
 ```shell
-cookiecutter c:\git\cookiecutter-templates\cookiecutter-python-uv --no-input
+cookiecutter c:\git\cookiecutter\t\python\uv --no-input
 ```
 
 #### + Install from a git(hub) repository
 
 ```shell
-cookiecutter gh:<user>/cookiecutter-python-uv
+cookiecutter gh:<user>/cookiecutter --directory="path/to/template/dir/in/repo"
 
 ## OR
-cookiecutter https://github.com/<user>/cookiecutter-python-uv
+cookiecutter https://github.com/<user>/cookiecutter --directory="t/python/cookiecutter-python-uv"
 ```
-
-### With nox
-
-The included [`noxfile.py`](./noxfile.py) has sessions for running cookiecutter commands.
-
-#### + Guided prompt to create new project from cookiecutter template
-
-```shell
-nox -s new-cookiecutter-project
-```
-
-#### + Install cookiecutter template in local `./sandbox/` directory:
-
-```shell
-nox -s install-cookiecutter-sandbox
-```
-
-#### + Cleanup (delete & recreate) the `./sandbox/` directory:
-
-```shell
-nox -s cleanup-sandbox
-```
-
