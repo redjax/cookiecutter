@@ -7,4 +7,5 @@
 This project uses [`uv`](https://astral.sh/uv) for dependency management. To get started, ensure you have `uv` installed.
 
 ```bash
-pdm install
+uv sync --dev --all-extras && uv build
+```
